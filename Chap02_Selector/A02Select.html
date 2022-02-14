@@ -8,7 +8,37 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript">
         // 조합 선택자
-        
+        $(document).ready(function () {
+            $('*').css('color', 'tomato');
+
+
+            //querySelector. getElementByID
+
+            let a = $('#a').css('textDecoration', 'underline');
+
+            console.log(a);
+
+            //querySelectAll, div 검색하고 if 문 등으로 id가 #a를 검색해서 결과 출력 - 자바스크립트
+            //div 태그이면서 id a가 붙어있는 요소만 선택. 앞의 div가 검색되는거라 div 붙은 id 2개 다 선택됨.
+            let divA = $('div#a').css('fontSize', '30px');
+            console.log(divA);
+
+            var divMain = $('div.main').css('fontStyle', 'italic');
+            $('div.main').css('color', 'orange');
+            console.log(divMain);
+
+            //하위 계츨을 모두 뒤져서 만족하면 적용
+            //<p><div><div><h1>ABX... => 적용된
+            $('div h1').css('color', 'lightblue');
+
+            //div의 자식 h1인 경우에만 적용
+            $('div > h1').css('textDecoration', 'underline');
+
+
+            //그룹도 가능
+            $('span, .test, .#b').css('fontStyle', 'italic');
+        })
+
     </script>
 </head>
 
@@ -27,10 +57,9 @@
         <div class="main">담벼락에 서생원</div>
         <div class="test">서생원에 고양이</div>
         <div id="a">고양이에 바둑이</div>
-        <div>
-            <h1>바둑이는 돌돌이</h1>
-        </div>
+
     </div>
+    <h1>바둑이는 돌돌이</h1>
 </body>
 
 </html>

@@ -8,7 +8,24 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript">
         // 일반 선택자
-        
+        $(function () {
+            let all = $('*').css('color', 'tomato');  //전체 태그들 *
+            console.log(all);                       //jquery는 배열을 만듦. 그 배열에 요소들이 들어가고 .CSS가 있으면 그 요소들을 하나씩 꺼내 CSS를 먹임
+
+
+            //최초 1개. id 선택자
+            let a = $('#a').css('color', 'orange');
+            console.log(a);
+
+            //클래스 선택자
+            let clz = $('.test').css('color', 'green');
+            console.log(clz);
+
+            //태그 선택자.
+            var h1 = $('h1').css('color', 'lightblue');
+            console.log(h1);
+
+        })
     </script>
 </head>
 

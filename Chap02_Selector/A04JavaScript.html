@@ -10,28 +10,12 @@
         // jQuery 객체와 JavaScript 객체
         $(function () {
             var test = $('.test').css('color', 'orange');
-            console.log(test);
-
-            //jquery 배열에서 추출하면 자바스크립트 DOM 객체가 반환된다.
-            //first는 자바스크립트 객체 => jquery 객체가 아님ㄴ
-            var first = test[0];        //jquery는 ㄴ배열이라 이렇게 꺼내올 수 도 있음
-            console.log(first);
-
-            //자바스크립트 객체에 jquery 명령을 적용해서 실행 => 에러
-            //first.css('fontWeight', 'bold');
-
-            first.style.fontWeight = 'bold';
-
-            //자바스크립트 객체를 jquery 객체로 변환 => $(변수명)
-            $(first).css('fontSize', '20pt');
-            $(test[1]).css('fontSize', '20pt');
-
-            //html 요소도 jquery 객체로 만들 수 있음
-            var dom = '<div>Hello World</div>';
-            console.log(dom);
-
-            var jq = $(dom).css('color', 'tomato');
-            console.log(jq);
+            for (var i = 0; i < test.length; i++) {
+                if (i % 2 === 0) {
+                    $(test[i]).css('fontSize', '20pt');
+                    $(test[i]).css('fontWeight', 'bold');
+                }
+            }
         })
     </script>
 </head>

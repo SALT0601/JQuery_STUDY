@@ -9,33 +9,19 @@
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script type="text/javascript" src="./jquery-3.6.0.js"></script>
     <script>
-        //jQueryf 라이브러리 밑에 이용할 명령을 기술한다.
-        // window.addEventListener('load', function() { })
 
-        console.log($);
-        console.log(jQuery); //2개 같은것
-
-        //window.load 이벤트를 구현한 명령
-        //1번 방법
         $(document).ready(function () {
-            $('#qty').css('backgroundColor', 'orange');   //dom에 있는 요소를 선택할땐 항상 문자열로
-            console.log('ONE');
+            $('#clickBtn').click(function (evt) { //addEvent안 쓰고 onClick에서 on 뺴고 바로 쓸 수 있음
+                let qty = Number('#qty'.val());           //값 꺼내는 메서드 val() 있음
+                let cost = Number('#cost'.val());           //제이쿼리에는 스트링을 넘버로 바꾸는 명령이 없어서 자바스크립트의 Number 가져옴
+                let result = qty * cost;        //form에서 넘어오는 데이터는 string이므로 + 안됨. 그래서 number로 바꿔야함
+
+                $('span').html('<b>' + result + '</b>'); //html에 태그 구문이나 text 구문 만들 수 있음
+
+
+            });
 
         });
-        //2번 방법
-        jQuery(document).ready(function () {
-
-            console.log('TWO');
-
-        });
-        //3번 방법
-        $(function () {
-            console.log('THREE');
-        });
-        //4번 방법
-        jQuery(function () {
-            console.log('THREE');
-        })
 
 
     </script>
