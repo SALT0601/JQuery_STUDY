@@ -11,20 +11,20 @@
             console.log(list);
 
             for (var i = 0; i < list.length; i++) {
-                setIndex(i);
+                //10번보다 편한방법
+                (function (index) {
+                    list[i].onclick = function () {
+                        alert((index + 1) + "번째 버튼 클릭!");
+                    };
+
+                })(i);
                 /*
                 list[i].onclick = function () {
                     alert((i + 1) + "번째 버튼 클릭!");
-                    
+                    setIndex(i);
                 };
                 */
 
-            }
-
-            function setIndex(index) {
-                list[i].onclick = function () {
-                    console.log((index + 1) + "번째 버튼 클릭!");
-                };
             }
         }
     </script>

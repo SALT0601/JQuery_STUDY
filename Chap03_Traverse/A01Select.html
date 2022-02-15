@@ -8,7 +8,25 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            //이렇게하면 전체문서를 2번 검색함. 그래서 전체문서를 검색하고 그 검색된 문서에서 또 검색하는 횡단검색이 빠르다.
+            var contentDiv = $('#content > div').css('color', 'lightblue');
+            var contentTest = $('#content > div.test').css('color', 'orange');
+            console.log(contentDiv);
+            console.log(contentTest);
 
+            //횡단 탐색자 => 전체 검색은 1번만 함. 일단 검색된 대상을 기준으로 한다.
+            var one = $('#one > div').css('color', 'lightgreen') //=> 여기서 11개 배열이 만들어짐
+                //filter => 위의 실행 결과 배열에서 필터링을 한다.
+                .filter('.test').css('color', 'tomato') // -=> 위의 배열 내에서 .test 검색해서 새 배열 만들고 새 배열을 쳐다봄
+                .filter('.main').css('fontSize', '20pt')
+                .end() //=> 상위 배열로 다시 올라간다.
+                .end();
+            console.log(one);
+
+            //이 방법이 깔끔할 수 있다.
+            var two = $('#two > div').css('color', 'lightgreen');       //11개 배열
+            var test = two.filter('.test').css('color', 'lightgreen');  //3개 배열
+            test.filter('.main').css('fontSize', '20pt');
         });
     </script>
 </head>

@@ -10,20 +10,21 @@
 		$(document).ready(function () {
 			$("input:disabled").css("border", "dashed 2px gray");
 
-			$('#content button').click(function(){
+			$('#content button[name="inquery"]').click(function () {
 
-				// val() => 지정한 폼 요소의 값을 가져올 때
-				// val(value) => 지정한 폼 요소의 값을 설정할 때
-				
-				
-			})
+				// val() => 지정한 폼 요소의 값을 가져올 때. GET
+				// val(value) => 지정한 폼 요소의 값을 설정할 때. SET
+
+				$('#content input[name="name"]');
+
+			});
 		});
 	</script>
 </head>
 
 <body>
 	<div class="card-body" id="content">
-		
+
 		Input:
 		<input type="text" name="name" class="form-control" placeholder="Name...">
 		<span title="nameValue"></span>
@@ -38,10 +39,10 @@
 		<br>
 		<br>
 		Radio Button<br>
-		<input type="radio" name="baseball" value="엔씨" checked> NC &nbsp; &nbsp; 
-		<input type="radio" name="baseball" value="두산"> Doosan &nbsp; &nbsp; 
-		<input type="radio" name="baseball" value="KT"> KT &nbsp; &nbsp; 
-		<input type="radio" name="baseball" value="엘지"> LG &nbsp; &nbsp; 
+		<input type="radio" name="baseball" value="엔씨" checked> NC &nbsp; &nbsp;
+		<input type="radio" name="baseball" value="두산"> Doosan &nbsp; &nbsp;
+		<input type="radio" name="baseball" value="KT"> KT &nbsp; &nbsp;
+		<input type="radio" name="baseball" value="엘지"> LG &nbsp; &nbsp;
 		<input type="radio" name="baseball" value="키움"> Kiwoom
 		<br>
 		<span title="baseballValue"></span>
@@ -49,17 +50,17 @@
 		<br>
 
 		CheckBox<br>
-		<input type="checkbox" name="five" value="엔씨" checked> NC &nbsp; &nbsp; 
-		<input type="checkbox" name="five" value="두산"> Doosan &nbsp; &nbsp; 
-		<input type="checkbox" name="five" value="KT"> KT &nbsp; &nbsp; 
-		<input type="checkbox" name="five" value="엘지"> LG &nbsp; &nbsp; 
+		<input type="checkbox" name="five" value="엔씨" checked> NC &nbsp; &nbsp;
+		<input type="checkbox" name="five" value="두산"> Doosan &nbsp; &nbsp;
+		<input type="checkbox" name="five" value="KT"> KT &nbsp; &nbsp;
+		<input type="checkbox" name="five" value="엘지"> LG &nbsp; &nbsp;
 		<input type="checkbox" name="five" value="키움"> Kiwoom
 		<br>
 		<span title="fiveValue"></span>
 		<br>
 		<br>
 
-		음식분류: 
+		음식분류:
 		<div class="input-group">
 			<select class="custom-select" name="food">
 				<option value="" selected>-----음식 분류를 선택하세요-----</option>
@@ -75,7 +76,7 @@
 		<div>선택 결과: <span title="foodSpan"></span></div>
 		<br>
 		<br>
-		음식분류 Multi: 
+		음식분류 Multi:
 		<div>
 			<select class="custom-select" multiple size="5" name="foods">
 				<option value="1" selected>한식</option>
@@ -92,7 +93,7 @@
 			<button class="btn btn-outline-secondary" type="button" name="inquery">조회</button>
 		</div>
 	</div>
-	
+
 </body>
 
 </html>

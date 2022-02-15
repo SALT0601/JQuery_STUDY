@@ -28,7 +28,16 @@
             //지정한 태그의 부모 => 따로 명령이 존재한다
             $('#nations > thead > tr > th:parent()').css('backgroundColor', 'lightgreen');
 
+            //b 태그의 부모 태그는 td가 된다.
             $('#nations > thead > tr > td:has("b"):parent').css('color', 'orange');
+
+            $('input[name="keyword"]').keyup(function (evt) {
+                $('#nations > tbody > tr').hide();
+
+                var value = $(this).val();
+                var x = $('#nations > tbody td:contains("' + value + '")').parent().show();
+                console.log(x);
+            });
 
 
         });
@@ -41,7 +50,7 @@
         <h3>국가별 수도</h3>
 
         <div style="width:460px;">
-            국가명 : <input type="text" id="keyword" class="form-control" /><br />
+            국가명 : <input type="text" name="keyword" class="form-control" /><br />
         </div>
 
         <table class="table" id="nations">

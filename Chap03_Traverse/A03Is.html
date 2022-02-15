@@ -8,6 +8,16 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            console.log($('#content').is('.test'));  //is 는 최종결과가 true/false로 떨어짐
+            console.log($('#content > div').is('.test'));   //11개를 뒤져서 test 있는지 확인
+            var x = $('#content > div').css('color', 'blue').is('.test');
+            console.log(x);
+
+            if (x) {
+                $('#content > .test').css('color', 'orange');
+            } else {
+                $('#content > .main').css('color', 'tomato');
+            }
 
         });
     </script>

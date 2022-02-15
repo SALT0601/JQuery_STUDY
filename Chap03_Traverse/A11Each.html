@@ -10,7 +10,14 @@
         $(document).ready(function () {
 
             var list = $(":input");
-            
+            console.log(list);
+            //each는 내부에서 즉시실행하면서 돌기때문에 자바스크립트처럼 전역변수 같은거 신경안써도됨.
+            list.each(function (index, elem) {
+                $(elem).click(function (evt) {
+                    alert((index + 1) + '번째 클릭...');
+                });
+            });
+
         });
     </script>
 </head>

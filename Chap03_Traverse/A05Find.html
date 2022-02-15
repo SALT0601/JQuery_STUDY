@@ -8,7 +8,36 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
+			//filter => 검색된 배열에서 찾는다.
+			// find => 지정한 컨텐츠 하위(자식)에서 찾는다. 사실 filter는 거의 안쓰고 find를 많이 쓴다.
+			/*
+			var x = $('#foods').css('color', 'blue')
+				.filter('.test').css('backgroundColor', 'orange');
+			console.log(x);
 			
+			var x = $('#foods td').css('color', 'blue')		//배열은 table 배열 개
+				.find('.test').css('backgroundColor', 'orange'); // 18개의 td 안에서 .test 찾음
+			console.log(x);
+			*/
+
+			//중간에 내용 추가되면 순서가 바뀌어 엉망될 가능성 있음. 계산해서 수정해야함
+			var x = $('#foods').css('color', 'lightblue')
+				.find('tr:nth-child(3n+1)').css('backgroundColor', 'orange')
+				.first().css('backgroundColor', 'tomato')
+				.end()
+				.last().css('backgroundColor', 'tomato');
+
+			console.log(x);
+
+			//이 방법은 추가가 되더라도 유연하게 해결할 수 있다.
+			//변수를 줬기때문에 바꿀 값만 수정하면 됨.
+			//그래서 배열에 변수 줘서하는게 좋음
+			//적용할 대상을 계산하기가 편리하다
+			var y = $('#one').css('color', 'lightblue');
+			var td = y.find('tr:nth-child(2n)').css('backgroundColor', 'orange');
+			td.first().css('backgroundColor', 'tomato');
+			td.last().css('backgroundColor', 'black');
+			td.eq(1).css('backgroundColor', 'teal');
 		});
 	</script>
 </head>
@@ -19,25 +48,82 @@
 
 		<table class="table" id="foods">
 			<tr>
-				<th>ID</th><th>먹을거리</th><th>분류</th>
+				<th>ID</th>
+				<th>먹을거리</th>
+				<th>분류</th>
+			</tr>
+			<tr class="test">
+				<td>F001</td>
+				<td>짜장면</td>
+				<td>중식</td>
 			</tr>
 			<tr>
-				<td>F001</td><td>짜장면</td><td>중식</td>
+				<td>F002</td>
+				<td><span class="test">라면</span></td>
+				<td>분식,한식</td>
 			</tr>
 			<tr>
-				<td>F002</td><td>라면</td><td>분식,한식</td>
+				<td>F003</td>
+				<td>김치찌개</td>
+				<td>한식</td>
 			</tr>
 			<tr>
-				<td>F003</td><td>김치찌개</td><td>한식</td>
+				<td>F004</td>
+				<td>돈까스</td>
+				<td>일식</td>
 			</tr>
 			<tr>
-				<td>F004</td><td>돈까스</td><td>일식</td>
+				<td>F005</td>
+				<td>초밥</td>
+				<td>일식</td>
 			</tr>
 			<tr>
-				<td>F005</td><td>초밥</td><td>일식</td>
+				<td>F006</td>
+				<td>한우암소안심스테이크</td>
+				<td>양식</td>
+			</tr>
+		</table>
+
+
+
+		<br>
+		<br>
+
+		<table class="table" id="one">
+			<tr>
+				<th>ID</th>
+				<th>먹을거리</th>
+				<th>분류</th>
+			</tr>
+			<tr class="test">
+				<td>F001</td>
+				<td>짜장면</td>
+				<td>중식</td>
 			</tr>
 			<tr>
-				<td>F006</td><td>한우암소안심스테이크</td><td>양식</td>
+				<td>F002</td>
+				<td><span class="test">라면</span></td>
+				<td>분식,한식</td>
+			</tr>
+			<tr>
+				<td>F003</td>
+				<td>김치찌개</td>
+				<td>한식</td>
+			</tr>
+			<tr>
+				<td>F004</td>
+				<td>돈까스</td>
+				<td>일식</td>
+			</tr>
+			<tr>
+				<td>F005</td>
+				<td>초밥</td>
+				<td>일식</td>
+			</tr>
+			<tr>
+				<td>F006</td>
+				<td>한우암소안심스테이크</td>
+				<td>양식</td>
 			</tr>
 		</table>
 	</div>

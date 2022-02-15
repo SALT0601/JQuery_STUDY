@@ -9,29 +9,60 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 
+			$('#save').click(function () {
+				/* //첫번째 방법
+				var fruit = $('#content > input[class="fruit"]:checked').map(function (index, elem) {	//여기도 index가 먼저 옴
+					//console.log(index, elem.value);
+					return elem.value;
+				});
+				console.log(fruit);
+
+				//유사배열이라서 for문
+				for (var i = 0; i < fruit.length; i++) {
+					console.log(fruit[i]);
+				}
+				
+
+				//두번째 방법. get() => jquery 배열을 자바스크립트 배열로 바꾸어서 리턴한다. => 배열
+				//훨씬 편함. 많이 사용하는 패턴
+				var x = $('#content > input[class="fruit"]:checked').map(function (index, elem) {
+					return elem.value;
+				}).get().join(' - ');
+				console.log(x);
+				*/
+
+				//세번째 방법. 어차피 순환을 하니까 IF문에서 있는지를 체크해도 된다.
+				//순환문으로 꺼내면 자바스크립트로 바뀌게 됨. 그래서 제이쿼리로 넣어줘야함
+				var x = $('#content > input[class="fruit"]').map(function (index, elem) {
+					if ($(elem).is(':checked')) return elem.value;
+				}).get().join(' - ');
+				console.log(x);
+
+				$('#list').html(x);
+			});
 		});
 	</script>
 </head>
 
 <body>
-	
+
 	<div class="card-body" id="content">
 		<h2>지금 먹고 싶은 과일은?</h2>
 
 		<input type="checkbox" class="fruit" value="1">사과,
 		<input type="checkbox" class="fruit" value="2">배,
 		<input type="checkbox" class="fruit" value="3">키위,
-		<input type="checkbox" class="fruit" value="4">포도<br/>
+		<input type="checkbox" class="fruit" value="4">포도<br />
 		<input type="checkbox" class="fruit" value="5">딸기,
 		<input type="checkbox" class="fruit" value="6">귤,
-		<input type="checkbox" class="fruit" value="7">수박<br/>
+		<input type="checkbox" class="fruit" value="7">수박<br />
 	</div>
 
 	<div class="card-body">
 		<button id="save">선택 저장</button>
 		<div id="list"></div>
 	</div>
-	
+
 </body>
 
 </html>

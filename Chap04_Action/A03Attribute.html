@@ -9,10 +9,16 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 
-			$('#toggle').click(function(){
-				
+			$('#toggle').click(function () {
+				var elem = $('#content > div > input');
+				//if(!elem.is(':disabled')) 와 같음
+				if (elem.is(':enabled')) {
+					elem.attr('disabled', 'disabled');
+				} else {
+					elem.removeAttr('disabled');
+				}
 			});
-			
+
 		});
 	</script>
 </head>
@@ -20,10 +26,10 @@
 <body>
 	<div id="content">
 		<div class="card-body">
-			이름 : <input class="form-control test" name="name" type="text" value="홍길동" /><br /> 
-			전화 : <input class="form-control test" name="tel" type="text" value="010-2121-3345"/><br />
+			이름 : <input class="form-control test" name="name" type="text" value="홍길동" /><br />
+			전화 : <input class="form-control test" name="tel" type="text" value="010-2121-3345" /><br />
 			주소 : <input class="form-control test" name="address" type="text" value="서울시" /><br />
-			
+
 			<button id="toggle">활성화/비활성화</button>
 		</div>
 	</div>
