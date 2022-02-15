@@ -6,15 +6,60 @@
 	<title>A08 Offset</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<style>
-		div.bg { width:800px; height:300px; background-color:aqua; margin: 5px 5px 5px 5px; }
-		div#outer { border:solid 1px black; background-color: yellow; width:600px; height:400px; padding: 10px 10px 10px 10px;
-			position:absolute; top: 100px; left:50px; }
-		div#inner { border:solid 1px black; background-color: orange; width:100px; height:100px; position:absolute; top:100px; left:50px; }
+		div.bg {
+			width: 800px;
+			height: 300px;
+			background-color: aqua;
+			margin: 5px 5px 5px 5px;
+		}
+
+		div#outer {
+			border: solid 1px black;
+			background-color: yellow;
+			width: 600px;
+			height: 400px;
+			padding: 10px 10px 10px 10px;
+			position: absolute;
+			top: 100px;
+			left: 50px;
+		}
+
+		div#inner {
+			border: solid 1px black;
+			background-color: orange;
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top: 100px;
+			left: 50px;
+		}
 	</style>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
+			$('#inner').click(function (evt) {
 
+				//document(브라우저)로부터 좌 상단 떨어진 위치
+				var offset = $(this).offset();
+				//부모 요소로부터(outer) 좌 상단 떨어진 위치
+				var pos = $(this).position();
+
+				console.log('offset => ', offset); //{top: 201, left: 101} => border 1px 껴서 1이 추가됨
+				console.log('pos => ', pos);
+
+				$(this).offset({ left: 0, top: 0 }); //positon은 setter가 없어서 위치 수정 불가
+			});
+
+			$('#changePos').click(function () {
+				//var w = $(this).width();			//content의 순수 width
+				//var w = $(this).innerWidth();		//padding 빼고 border 포함한 width
+				var w = $(this).outerWidth();		//padding 까지 전부 포함한 width
+				//var h = $(this).height();
+				var left = $(this).offset().left;
+				var top = $(this).offset().top;
+
+				$('#inner').offset({ left: left + w, top: top });
+			});
 		});
 	</script>
 </head>

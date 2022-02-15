@@ -10,12 +10,67 @@
 		$(document).ready(function () {
 			$("input:disabled").css("border", "dashed 2px gray");
 
+			$('span[title="nameValue"').css('display', 'block');
+			$('span[title="nameValue"').hide(); //숨겼다가
+
 			$('#content button[name="inquery"]').click(function () {
 
 				// val() => 지정한 폼 요소의 값을 가져올 때. GET
 				// val(value) => 지정한 폼 요소의 값을 설정할 때. SET
+				//
+				var name = $('#content input[name="name"]').val();
+				if (name) {
+					$('span[title="nameValue"]').show().html(name);  //필요할때 나오게함
+				} else {
+					$('span[title="nameValue"]').show().html('값이 입력되지 않았습니다.');
+				}
 
-				$('#content input[name="name"]');
+				//password -> 알아서 복붙 안되게 막혀있음.
+				var password = $('#content input[name="password"]').val();
+				$('span[title="passwordValue"]').html(password);
+
+				//comment
+				var comment = $('#content textarea[name="comment"]').val();
+				$('span[title="commentValue"]').html(comment);
+
+				//Radio Button 도 1개만 선택된다
+				var baseball = $('#content input[name="baseball"]').val();
+				$('span[title="baseballValue"]').html(baseball);
+
+				//자바스크립트.forEach
+				//제이쿼리.each()
+
+				//CheckBox 는 여러개 선택된다 => 순환 필요
+				//each는 반환이 없고 순환만해서 배열에 넣어서 가져와야함
+				/*
+				var ary = [];
+				$('#content input[name="five"]:checked').each(function (index, elem) {
+
+					ary.push($(elem).val());
+				}).get();
+				$('span[title="fiveValue"]').html(five);
+				*/
+				//map => each와 달리 순환되는 객체 값을 반환해줌.
+				var five = $('#content input[name="five"]:checked').map(function (index, elem) {
+					return $(elem).val();
+				}).get().join(', ');
+				console.log(five);
+				$('span[title="fiveValue"]').html(five);
+
+				//select도 1개만 선택된다
+				var food = $('#content select[name="food"] > option:selected').val();
+				$('span[title="foodSpan"]').html(food);
+				// Form 이외의 HTML 요소
+				$('span[title="foodSpan"]').html(food);
+
+				//form 요소는 val(value)
+				$('#content > input[title="foodInput"]').val(food);
+
+				//select도 다중 선택 => checkbox와 동일하게 순환
+				var foods = $('#content select[name="foods"] > option:selected').map(function (index, elem) {
+					return $(elem).val();
+				}).get().join(', ');
+				$('span[title="foods"]').html(foods);
 
 			});
 		});

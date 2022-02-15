@@ -11,8 +11,10 @@
         $(function () {
             var test = $('.test').css('color', 'orange');
             for (var i = 0; i < test.length; i++) {
+                //for문에서 꺼내지면 자바스크립트 객체가 된다. 그래서 제이쿼리로 묶어줬다.
                 if (i % 2 === 0) {
                     $(test[i]).css('fontSize', '20pt');
+                    //test[i].style.fontSize = "20pt" - 자바스크립트로 쓰려면 이렇게 쓰면 된다.
                     $(test[i]).css('fontWeight', 'bold');
                 }
             }
