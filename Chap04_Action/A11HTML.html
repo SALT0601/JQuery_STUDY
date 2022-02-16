@@ -12,6 +12,21 @@
 				return "<h1>" + (new Date()).toLocaleTimeString() + "</h1>";
 			}
 
+			//html은 파싱됨
+			$('#savehtml').click(function () {
+				$('#content').html(createTimeString());
+			});
+			$('#readhtml').click(function () {
+				var result = $('#content').html();
+				console.log(result);
+			});
+			$('#savetext').click(function () {
+				$('#content').text(createTimeString());
+			});
+			$('#readtext').click(function () {
+				var result = $('#content').text();
+				console.log(result);
+			});
 		});
 	</script>
 </head>
@@ -24,7 +39,7 @@
 		<button id="readtext">text()</button>
 		<div id="content"></div>
 	</div>
-	
+
 </body>
 
 </html>

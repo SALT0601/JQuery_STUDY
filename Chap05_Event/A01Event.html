@@ -9,14 +9,19 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$("input:disabled").css("border", "dashed 2px gray");
-			
+
+			//$('#inquery').click(function () {
+			$('#inquery').on('click', function (evt) { //이런 방식으로 쓸 수 있다.
+				var result = $('#food > option:selected').val();
+				$('#result').val(result);//form이라 html안쓰고 val 씀
+			});
 		});
 	</script>
 </head>
 
 <body>
 	<div class="card-body">
-		음식분류: 
+		음식분류:
 		<div class="input-group">
 			<select class="custom-select" id="food">
 				<option value="" selected>-----음식 분류를 선택하세요-----</option>
@@ -32,10 +37,10 @@
 		</div>
 
 		<hr>
-		
+
 		선택 결과 : <input class="form-control" type="text" id="result" value="" disabled />
 	</div>
-	
+
 </body>
 
 </html>
